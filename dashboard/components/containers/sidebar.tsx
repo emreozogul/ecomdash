@@ -16,6 +16,7 @@ import {
     TooltipProvider
 } from "@/components/ui/tooltip"
 import ModeToggle from "../theme/theme-toggle"
+import AvatarMenu from "./avatar-menu"
 
 
 
@@ -28,7 +29,7 @@ const MENU_ITEMS = [
     {
         icon: ShoppingCart,
         label: "Orders",
-        href: "#",
+        href: "/dashboard/orders",
     },
     {
         icon: Package,
@@ -38,17 +39,17 @@ const MENU_ITEMS = [
     {
         icon: Users2,
         label: "Customers",
-        href: "#",
+        href: "/dashboard/customers",
     },
     {
         icon: LineChart,
         label: "Analytics",
-        href: "#",
+        href: "/dashboard/analytics",
     },
     {
         icon: Settings,
         label: "Settings",
-        href: "#",
+        href: "/dashboard/settings",
     },
 ]
 
@@ -80,7 +81,7 @@ export default function Sidebar() {
                     ))}
                 </TooltipProvider>
             </nav>
-            <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
+            <nav className="mt-auto flex flex-col items-center gap-4  sm:py-5">
                 <ModeToggle />
             </nav>
         </aside>
