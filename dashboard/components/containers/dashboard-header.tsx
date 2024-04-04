@@ -1,7 +1,6 @@
-"use client"
-
-import React from "react"
-import Link from "next/link"
+"use client";
+import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "../ui/breadcrumb";
+import { Button } from "../ui/button"
 import {
     Home,
     LineChart,
@@ -12,22 +11,41 @@ import {
     Users2,
 } from "lucide-react"
 
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbPage,
-    BreadcrumbSeparator,
-} from "../ui/breadcrumb"
-
-import { Button } from "../ui/button"
-
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Fragment } from "react";
 
+export default function Header() {
+    const pathname = usePathname();
+    const paths = pathname.split("/").filter(Boolean);
 
+    const BreadcrumbContainer = () => {
+        if (paths.length > 1 && paths[paths.length - 1] !== "settings") {
+            return (
+                <Breadcrumb className="hidden md:flex">
+                    <BreadcrumbList>
+                        {paths.map((path, index) => (
+                            <Fragment key={path + "-" + index}>
+                                {index > 0 && <BreadcrumbSeparator />}
+                                <BreadcrumbItem>
+                                    {index === paths.length - 1 ? (
+                                        <BreadcrumbPage>{path.charAt(0).toUpperCase() + path.slice(1)}</BreadcrumbPage>
+                                    ) : (
+                                        <BreadcrumbLink>
+                                            {path.charAt(0).toUpperCase() + path.slice(1)}
+                                        </BreadcrumbLink>
+                                    )}
+                                </BreadcrumbItem>
+                            </Fragment>
+                        ))}
+                    </BreadcrumbList>
+                </Breadcrumb>
+            )
+        }
+        return null;
+    }
 
-export default function HeaderDashboard() {
     return (
         <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
             <Sheet>
@@ -84,26 +102,7 @@ export default function HeaderDashboard() {
                     </nav>
                 </SheetContent>
             </Sheet>
-            <Breadcrumb className="hidden md:flex">
-                <BreadcrumbList>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink asChild>
-                            <Link href="#">Dashboard</Link>
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbLink asChild>
-                            <Link href="#">Products</Link>
-                        </BreadcrumbLink>
-                    </BreadcrumbItem>
-                    <BreadcrumbSeparator />
-                    <BreadcrumbItem>
-                        <BreadcrumbPage>All Products</BreadcrumbPage>
-                    </BreadcrumbItem>
-                </BreadcrumbList>
-            </Breadcrumb>
-
+            <BreadcrumbContainer />
         </header>
-    )
+    );
 }
