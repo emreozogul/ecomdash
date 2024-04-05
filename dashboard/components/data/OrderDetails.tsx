@@ -1,7 +1,4 @@
-
 import {
-    ChevronLeft,
-    ChevronRight,
     Copy,
     CreditCard,
     MoreVertical,
@@ -26,56 +23,9 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Input } from "@/components/ui/input"
-import {
-    Pagination,
-    PaginationContent,
-    PaginationItem,
-} from "@/components/ui/pagination"
+
 import { Separator } from "@/components/ui/separator"
-
-type OrderDetailsProps = {
-    orderID: string
-    orderDetails: {
-        date: string
-        currency: string
-        product: {
-            productID: string
-            name: string
-            quantity: number
-            price: number
-        }[]
-        subtotal: number
-        shipping: number
-        tax: number
-        total: number
-        shippingInformation: {
-            name: string
-            address: string
-            city: string
-            state: string
-            zip: string
-        }
-        billingInformation: {
-            isSameAsShipping: boolean
-            name?: string
-            address?: string
-            city?: string
-            state?: string
-            zip?: string
-        }
-        customerInformation: {
-            name: string
-            email: string
-            phone: string
-        }
-        paymentInformation: {
-            type: string
-            cardNumber: string
-        }
-    }
-
-}
+import { OrderDetailsProps } from "@/types/order-details"
 
 
 export default function OrderDetails({ orderID, orderDetails }: OrderDetailsProps) {

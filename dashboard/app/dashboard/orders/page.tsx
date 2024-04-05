@@ -1,10 +1,8 @@
+"use client";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuCheckboxItem } from "@/components/ui/dropdown-menu"
 import {
-    Activity,
-    ArrowUpRight,
-    CreditCard,
     DollarSign,
     Users,
     ListFilter,
@@ -16,8 +14,35 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import OrderDetails from "@/components/data/OrderDetails"
+import { OrderDetailsProps } from "@/types/order-details"
+import { mockOrderDetailsList } from "@/lib/mockdata"
+import { useState } from "react"
 
 export default function Page() {
+
+    const [selectedOrderDetails, setSelectedOrderDetails] = useState(mockOrderDetailsList[0].orderDetails);
+    const [selectedOrderID, setSelectedOrderID] = useState(mockOrderDetailsList[0].orderID);
+
+    function loadOrderDetails(orderID: string, orderDetails: OrderDetailsProps["orderDetails"]) {
+        setSelectedOrderID(orderID);
+        setSelectedOrderDetails(orderDetails);
+    }
+
+
+
+    function BadgeType(status: string) {
+        switch (status) {
+            case 'Fullfilled':
+                return <Badge variant="fullfilled">Fullfilled</Badge>
+            case 'Pending':
+                return <Badge variant="pending">Pending</Badge>
+            case 'Refunded':
+                return <Badge variant="refunded">Refunded</Badge>
+            default:
+                return <Badge variant="secondary">{status}</Badge>
+        }
+    }
+
 
     return (
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
@@ -91,166 +116,33 @@ export default function Page() {
                                         </TableRow>
                                     </TableHeader>
                                     <TableBody>
-                                        <TableRow className="bg-accent">
-                                            <TableCell>
-                                                <div className="font-medium">Liam Johnson</div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
-                                                    liam@example.com
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                Sale
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                <Badge className="text-xs" variant="secondary">
-                                                    Fulfilled
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="hidden md:table-cell">
-                                                2023-06-23
-                                            </TableCell>
-                                            <TableCell className="text-right">$250.00</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>
-                                                <div className="font-medium">Olivia Smith</div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
-                                                    olivia@example.com
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                Refund
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                <Badge className="text-xs" variant="outline">
-                                                    Declined
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="hidden md:table-cell">
-                                                2023-06-24
-                                            </TableCell>
-                                            <TableCell className="text-right">$150.00</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>
-                                                <div className="font-medium">Noah Williams</div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
-                                                    noah@example.com
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                Subscription
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                <Badge className="text-xs" variant="secondary">
-                                                    Fulfilled
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="hidden md:table-cell">
-                                                2023-06-25
-                                            </TableCell>
-                                            <TableCell className="text-right">$350.00</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>
-                                                <div className="font-medium">Emma Brown</div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
-                                                    emma@example.com
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                Sale
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                <Badge className="text-xs" variant="secondary">
-                                                    Fulfilled
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="hidden md:table-cell">
-                                                2023-06-26
-                                            </TableCell>
-                                            <TableCell className="text-right">$450.00</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>
-                                                <div className="font-medium">Liam Johnson</div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
-                                                    liam@example.com
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                Sale
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                <Badge className="text-xs" variant="secondary">
-                                                    Fulfilled
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="hidden md:table-cell">
-                                                2023-06-23
-                                            </TableCell>
-                                            <TableCell className="text-right">$250.00</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>
-                                                <div className="font-medium">Liam Johnson</div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
-                                                    liam@example.com
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                Sale
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                <Badge className="text-xs" variant="secondary">
-                                                    Fulfilled
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="hidden md:table-cell">
-                                                2023-06-23
-                                            </TableCell>
-                                            <TableCell className="text-right">$250.00</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>
-                                                <div className="font-medium">Olivia Smith</div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
-                                                    olivia@example.com
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                Refund
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                <Badge className="text-xs" variant="outline">
-                                                    Declined
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="hidden md:table-cell">
-                                                2023-06-24
-                                            </TableCell>
-                                            <TableCell className="text-right">$150.00</TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>
-                                                <div className="font-medium">Emma Brown</div>
-                                                <div className="hidden text-sm text-muted-foreground md:inline">
-                                                    emma@example.com
-                                                </div>
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                Sale
-                                            </TableCell>
-                                            <TableCell className="hidden sm:table-cell">
-                                                <Badge className="text-xs" variant="secondary">
-                                                    Fulfilled
-                                                </Badge>
-                                            </TableCell>
-                                            <TableCell className="hidden md:table-cell">
-                                                2023-06-26
-                                            </TableCell>
-                                            <TableCell className="text-right">$450.00</TableCell>
-                                        </TableRow>
+                                        {mockOrderDetailsList.map((order: OrderDetailsProps) => (
+                                            <TableRow key={order.orderID} onClick={() => {
+                                                loadOrderDetails(order.orderID, order.orderDetails)
+                                            }}>
+                                                <TableCell>
+                                                    <div className="flex items-center gap-2">
+                                                        <Users className="h-5 w-5" />
+                                                        <span>{order.orderDetails.customerInformation.name}</span>
+                                                    </div>
+                                                </TableCell>
+                                                <TableCell className="hidden sm:table-cell">
+                                                    <Badge variant="secondary">Online</Badge>
+                                                </TableCell>
+                                                <TableCell className="hidden sm:table-cell">
+                                                    {BadgeType(order.orderDetails.status)}
+                                                </TableCell>
+                                                <TableCell className="hidden md:table-cell">
+                                                    {order.orderDetails.date}
+                                                </TableCell>
+                                                <TableCell className="text-right">
+                                                    <div className="flex items-center gap-1">
+                                                        <DollarSign className="h-4 w-4" />
+                                                        <span>{order.orderDetails.total}</span>
+                                                    </div>
+                                                </TableCell>
+                                            </TableRow>
+                                        ))}
                                     </TableBody>
                                 </Table>
                             </CardContent>
@@ -258,79 +150,7 @@ export default function Page() {
                     </TabsContent>
                 </Tabs>
             </div>
-            <OrderDetails orderID="11" orderDetails={
-                {
-                    date: "2022-01-01",
-                    currency: "USD",
-                    product: [{
-                        productID: "123",
-                        name: "Product Name",
-                        quantity: 3,
-                        price: 100
-                    }, {
-                        productID: "123",
-                        name: "Product Name",
-                        quantity: 3,
-                        price: 100
-                    }, {
-                        productID: "123",
-                        name: "Product Name",
-                        quantity: 3,
-                        price: 100
-                    }, {
-                        productID: "123",
-                        name: "Product Name",
-                        quantity: 3,
-                        price: 100
-                    }, {
-                        productID: "123",
-                        name: "Product Name",
-                        quantity: 3,
-                        price: 100
-                    }, {
-                        productID: "123",
-                        name: "Product Name",
-                        quantity: 3,
-                        price: 100
-                    }, {
-                        productID: "123",
-                        name: "Product Name",
-                        quantity: 3,
-                        price: 100
-                    }],
-                    subtotal: 300,
-                    shipping: 10,
-                    tax: 30,
-                    total: 340,
-                    shippingInformation: {
-                        name: "John Doe",
-                        address: "1234 Main St",
-                        city: "Anytown",
-                        state: "CA",
-                        zip: "12345",
-                    },
-                    billingInformation: {
-                        isSameAsShipping: true,
-                        name: "John Doe",
-                        address: "1234 Main St",
-                        city: "Anytown",
-                        state: "CA",
-                        zip: "12345",
-                    },
-                    customerInformation: {
-                        name: "John Doe",
-                        email: "johndoe@gmail.com",
-                        phone: "123-456-7890",
-                    },
-                    paymentInformation: {
-                        type: "Visa",
-                        cardNumber: "1234 5678 9012 3456",
-                    }
-
-                }
-
-
-            } />
+            <OrderDetails orderID={selectedOrderID} orderDetails={selectedOrderDetails} />
         </main>
     )
 
