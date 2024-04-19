@@ -6,8 +6,9 @@ import {
     LineChart,
     Package,
     Package2,
-    PanelLeft,
+    Settings,
     ShoppingCart,
+    PanelLeft,
     Users2,
 } from "lucide-react"
 
@@ -15,6 +16,41 @@ import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet"
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Fragment } from "react";
+
+
+const MENU_ITEMS = [
+    {
+        icon: Home,
+        label: "Dashboard",
+        href: "/dashboard",
+    },
+    {
+        icon: ShoppingCart,
+        label: "Orders",
+        href: "/dashboard/orders",
+    },
+    {
+        icon: Package,
+        label: "Products",
+        href: "/dashboard/products",
+    },
+    {
+        icon: Users2,
+        label: "Customers",
+        href: "/dashboard/customers",
+    },
+    {
+        icon: LineChart,
+        label: "Analytics",
+        href: "/dashboard/analytics",
+    },
+    {
+        icon: Settings,
+        label: "Settings",
+        href: "/dashboard/settings",
+    },
+]
+
 
 export default function Header() {
     const pathname = usePathname();
@@ -57,48 +93,13 @@ export default function Header() {
                 </SheetTrigger>
                 <SheetContent side="left" className="sm:max-w-xs">
                     <nav className="grid gap-6 text-lg font-medium">
-                        <Link
-                            href="#"
-                            className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
-                        >
-                            <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
-                            <span className="sr-only">Acme Inc</span>
-                        </Link>
-                        <Link
-                            href="#"
-                            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                        >
-                            <Home className="h-5 w-5" />
-                            Dashboard
-                        </Link>
-                        <Link
-                            href="#"
-                            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                        >
-                            <ShoppingCart className="h-5 w-5" />
-                            Orders
-                        </Link>
-                        <Link
-                            href="#"
-                            className="flex items-center gap-4 px-2.5 text-foreground"
-                        >
-                            <Package className="h-5 w-5" />
-                            Products
-                        </Link>
-                        <Link
-                            href="#"
-                            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                        >
-                            <Users2 className="h-5 w-5" />
-                            Customers
-                        </Link>
-                        <Link
-                            href="#"
-                            className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-                        >
-                            <LineChart className="h-5 w-5" />
-                            Settings
-                        </Link>
+                        {MENU_ITEMS.map((item, index) => (
+                            <Link key={index} href={item.href} className={`flex items-center gap-2 p-3 rounded-lg ${pathname === item.href ? "bg-primary-foreground text-primary" : "text-muted-foreground"}`}>
+                                <item.icon className="h-5 w-5" />
+                                <span>{item.label}</span>
+
+                            </Link>
+                        ))}
                     </nav>
                 </SheetContent>
             </Sheet>

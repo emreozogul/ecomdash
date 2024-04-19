@@ -2,17 +2,8 @@ import Image from "next/image"
 import Link from "next/link"
 import {
     ChevronLeft,
-    Home,
-    LineChart,
-    Package,
-    Package2,
-    PanelLeft,
     PlusCircle,
-    Search,
-    Settings,
-    ShoppingCart,
     Upload,
-    Users2,
 } from "lucide-react"
 
 import { Badge } from "@/components/ui/badge"
@@ -47,6 +38,7 @@ import {
     ToggleGroup,
     ToggleGroupItem,
 } from "@/components/ui/toggle-group"
+
 
 
 export default function EditPage() {
