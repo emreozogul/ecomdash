@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme/theme-provider";
-import SessionWrapper from "@/components/session/session-wrapper";
+import { ThemeProvider } from "@/components/providers/theme/theme-provider";
+import SessionWrapper from "@/components/providers/session/session-wrapper";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,10 +17,10 @@ type RootLayoutProps = {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <SessionWrapper>
-      <html lang="en" suppressHydrationWarning>
-        <head />
-        <body>
+    <html lang="en" suppressHydrationWarning>
+      <head />
+      <body>
+        <SessionWrapper>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -29,8 +29,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
           >
             {children}
           </ThemeProvider>
-        </body>
-      </html>
-    </SessionWrapper>
+        </SessionWrapper>
+      </body>
+    </html>
   )
 }

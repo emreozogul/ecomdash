@@ -34,6 +34,17 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import { Textarea } from "@/components/ui/textarea"
+import {
+    DialogContent,
+    DialogClose,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogOverlay,
+    DialogTrigger,
+    DialogTitle,
+    Dialog
+} from "@/components/ui/dialog"
 
 import CustomModal from "@/components/containers/custom-modal"
 
@@ -119,60 +130,67 @@ export default function AddPage() {
                                 </Table>
                             </CardContent>
                             <CardFooter className="justify-center border-t p-4">
-                                <CustomModal
-                                    isOpen={isModalOpen}
-                                    desc="Add stock details"
-                                    title="Add Stock"
-                                    onsubmit={handleSubmit}
-                                    formState={{}}
-                                    trigger={
+                                <Dialog  >
+                                    <DialogTrigger asChild>
                                         <Button size="sm" variant="ghost" className="gap-1">
                                             <PlusCircle className="h-3.5 w-3.5" />
                                             Add Stock
                                         </Button>
-                                    }
-                                >
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="sku">SKU</Label>
-                                        <Input
-                                            id="sku"
-                                            type="text"
-                                            className="w-full"
-                                            placeholder="Enter SKU"
-                                        />
-                                    </div>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="stock">Stock</Label>
-                                        <Input
-                                            id="stock"
-                                            type="number"
-                                            className="w-full"
-                                            placeholder="Enter stock"
-                                        />
-                                    </div>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="price">Price</Label>
-                                        <Input
-                                            id="price"
-                                            type="number"
-                                            className="w-full"
-                                            placeholder="Enter price"
-                                        />
-                                    </div>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="size">Size</Label>
-                                        <Select>
-                                            <SelectTrigger id="size" aria-label="Select size">
-                                                <SelectValue placeholder="Select size" />
-                                            </SelectTrigger>
-                                            <SelectContent>
-                                                <SelectItem value="small">Small</SelectItem>
-                                                <SelectItem value="medium">Medium</SelectItem>
-                                                <SelectItem value="large">Large</SelectItem>
-                                            </SelectContent>
-                                        </Select>
-                                    </div>
-                                </CustomModal>
+                                    </DialogTrigger>
+                                    <DialogContent className="flex flex-col gap-2">
+                                        <DialogClose />
+                                        <DialogHeader className="flex flex-col gap-2">
+                                            <DialogTitle>Add Stock</DialogTitle>
+                                            <DialogDescription>Add stock details</DialogDescription>
+                                        </DialogHeader>
+                                        <div className="grid gap-4 py-4">
+                                            <div className="grid gap-3">
+                                                <Label htmlFor="sku">SKU</Label>
+                                                <Input
+                                                    id="sku"
+                                                    type="text"
+                                                    className="w-full"
+                                                    placeholder="Enter SKU"
+                                                />
+                                            </div>
+                                            <div className="grid gap-3">
+                                                <Label htmlFor="stock">Stock</Label>
+                                                <Input
+                                                    id="stock"
+                                                    type="number"
+                                                    className="w-full"
+                                                    placeholder="Enter stock"
+                                                />
+                                            </div>
+                                            <div className="grid gap-3">
+                                                <Label htmlFor="price">Price</Label>
+                                                <Input
+                                                    id="price"
+                                                    type="number"
+                                                    className="w-full"
+                                                    placeholder="Enter price"
+                                                />
+                                            </div>
+                                            <div className="grid gap-3">
+                                                <Label htmlFor="size">Size</Label>
+                                                <Select>
+                                                    <SelectTrigger id="size" aria-label="Select size">
+                                                        <SelectValue placeholder="Select size" />
+                                                    </SelectTrigger>
+                                                    <SelectContent>
+                                                        <SelectItem value="small">Small</SelectItem>
+                                                        <SelectItem value="medium">Medium</SelectItem>
+                                                        <SelectItem value="large">Large</SelectItem>
+                                                    </SelectContent>
+                                                </Select>
+                                            </div>
+                                        </div>
+                                        <DialogFooter>
+                                            <Button type="submit" variant="default" >Submit</Button>
+                                        </DialogFooter>
+                                    </DialogContent>
+                                </Dialog>
+
                             </CardFooter>
                         </Card>
                         <Card>
@@ -224,41 +242,7 @@ export default function AddPage() {
                                 </div>
 
                             </CardContent>
-                            <CardFooter className="justify-center border-t p-4">
-                                <CustomModal
-                                    isOpen={isModalOpen}
-                                    desc="Add category details"
-                                    title="Add Category"
-                                    onsubmit={handleSubmit}
-                                    formState={{}}
-                                    trigger={
-                                        <Button size="sm" variant="ghost" className="gap-1">
-                                            <PlusCircle className="h-3.5 w-3.5" />
-                                            Add Category
-                                        </Button>
-                                    }
-                                >
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="category">Category</Label>
-                                        <Input
-                                            id="category"
-                                            type="text"
-                                            className="w-full"
-                                            placeholder="Enter category"
-                                        />
-                                    </div>
-                                    <div className="grid gap-3">
-                                        <Label htmlFor="subcategory">Subcategory</Label>
-                                        <Input
-                                            id="subcategory"
-                                            type="text"
-                                            className="w-full"
-                                            placeholder="Enter subcategory"
-                                        />
-                                    </div>
-                                </CustomModal>
 
-                            </CardFooter>
                         </Card>
                     </div>
                     <div className="grid auto-rows-max items-start gap-4 lg:gap-8">

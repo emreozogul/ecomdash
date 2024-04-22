@@ -277,3 +277,189 @@ export const mockOrderDetailsList: OrderDetailsProps[] = [
         },
     },
 ];
+
+export const mockProductList = [
+    {
+        id: 'PROD001',
+        name: 'Wireless Mouse',
+        status: 'Active',
+        price: 29.99,
+        quantity: 100,
+        createdAt: '2024-04-01',
+        totalSales: 50,
+
+    }, {
+        id: 'PROD002',
+        name: 'Mechanical Keyboard',
+        status: 'Active',
+        price: 119.99,
+        quantity: 50,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD003',
+        name: 'Gaming Headset',
+        status: 'Active',
+        price: 79.99,
+        quantity: 75,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD004',
+        name: 'Bluetooth Speaker',
+        status: 'Active',
+        price: 45.00,
+        quantity: 25,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD005',
+        name: 'Smart Watch',
+        status: 'Active',
+        price: 199.99,
+        quantity: 10,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD006',
+        name: 'Laptop Sleeve',
+        status: 'Active',
+        price: 25.50,
+        quantity: 30,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD007',
+        name: 'External Hard Drive',
+        status: 'Active',
+        price: 120.00,
+        quantity: 20,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD008',
+        name: 'Fitness Tracker',
+        status: 'Active',
+        price: 99.99,
+        quantity: 40,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD009',
+        name: 'Wireless Earbuds',
+        status: 'Active',
+        price: 59.99,
+        quantity: 60,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD010',
+        name: 'Smartphone',
+        status: 'Active',
+        price: 599.99,
+        quantity: 15,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD011',
+        name: 'Tablet',
+        status: 'Active',
+        price: 399.99,
+        quantity: 20,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD012',
+        name: 'Laptop',
+        status: 'Active',
+        price: 999.99,
+        quantity: 10,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD013',
+        name: 'Desktop Computer',
+        status: 'Archived',
+        price: 1499.99,
+        quantity: 5,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD014',
+        name: 'Monitor',
+        status: 'Active',
+        price: 299.99,
+        quantity: 25,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD015',
+        name: 'Printer',
+        status: 'Draft',
+        price: 199.99,
+        quantity: 30,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD016',
+        name: 'Scanner',
+        status: 'Active',
+        price: 149.99,
+        quantity: 20,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD017',
+        name: 'Webcam',
+        status: 'Active',
+        price: 49.99,
+        quantity: 50,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD018',
+        name: 'Microphone',
+        status: 'Active',
+        price: 29.99,
+        quantity: 75,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD019',
+        name: 'Tripod',
+        status: 'Active',
+        price: 19.99,
+        quantity: 100,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    }, {
+        id: 'PROD020',
+        name: 'Camera',
+        status: 'Active',
+        price: 499.99,
+        quantity: 10,
+        createdAt: '2024-04-01',
+        totalSales: 25,
+
+    },
+
+
+];

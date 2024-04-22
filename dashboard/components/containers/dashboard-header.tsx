@@ -21,7 +21,7 @@ import { Fragment } from "react";
 const MENU_ITEMS = [
     {
         icon: Home,
-        label: "Dashboard",
+        label: "Home",
         href: "/dashboard",
     },
     {
